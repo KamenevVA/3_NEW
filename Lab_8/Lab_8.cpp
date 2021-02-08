@@ -24,8 +24,6 @@ List* readFile() {
         perror("\nОшибка при открытии файла data.dat");
         exit(0);
     }
-    fclose(fp);
-
     p = new List;
     if (!feof(fp)) 
     {
@@ -36,6 +34,7 @@ List* readFile() {
         cout << p->data.name;
         exit(0);
     }
+    fclose(fp);
     cout << "Чтение окончено" << endl;
     return first;
 }
@@ -138,3 +137,4 @@ int main()
     cout << endl;
     return 0;
 }
+
