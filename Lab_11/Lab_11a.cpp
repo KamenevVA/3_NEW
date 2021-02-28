@@ -58,13 +58,6 @@ void print(lab* head)
 	cout << endl;
 }
 
-void clean(lab* head) {
-	lab* elem = head;
-	elem = head;
-	head = head->next;
-	delete elem;
-}
-
 
 int main()
 {
@@ -82,7 +75,6 @@ int main()
 	print(head);
 	cout << endl;
 
-	clean(head);
 
 	return(0);
 }
