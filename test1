@@ -1,0 +1,96 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+int mn1[20], mn2[20];
+int x;
+const int k = 19;
+bool a = true;
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(NULL));
+	cout << "Выберети действие " << endl;
+	cout << "1 - Автоматическое создание множества" << endl;
+	cout << "2 - Создание множества вручную" << endl;
+	cout << "3 - " << endl;
+	cin >> x;
+	switch (x)
+	{
+	case 1:
+		//Создание 1-ого множества:
+		cout << "Автоматическое создание множества..." << endl;
+		cout << "1-ое множество:" << endl;
+		for (int i = 0; i < 19; i++) {
+		First:
+			mn1[i] = rand() % 19 - 9;
+			for (int j = 0; j < i; j++) {
+				if (mn1[j] == mn1[i]) {
+					goto First;
+				}
+			}
+		}
+		for (int i = 0; i < 19; i++) {
+			cout << " " << mn1[i];
+		}
+		break;
+	case 2:
+		//Создание 2-ого множества:
+		cout << "Введите количество чисел в множестве, не больше 19 " << endl;
+		int mn3[k];
+		int n,m;
+		while (a == true) {
+			cin >> n;
+			if ((n < 1) || (n > 19)) {
+				cout << "Вы ввели недопустимое число, введите коректное число!";
+			}
+			else {
+				a = false;
+			}
+		}
+		cout << "Заполните множетсво числами от -9 до 9" << endl;
+		for (int i = 0; i < n; i++) {
+		int b;
+		Second:
+			cin >> b;
+			if ((b < -9) || (b > 9)) {
+				cout << "Вы ввели недопустимое число, введите коректное число!" << endl;
+				goto Second;
+			}
+			else {
+				mn3[i] = b;
+				for (int j = 0; j < i; j++) {
+					if (mn3[i] == mn3[j]) {
+						cout << "Вы ввели недопустимое число, введите коректное число!" << endl;
+						goto Second;
+					}
+				}
+			}
+		}
+		cout << "Множество:" << endl;
+		for (int i = 0; i < n; i++) {
+			cout << " " << mn3[i];
+		}
+		break;
+	case 3:
+		//Создание 3-ого множества:
+		int v;
+		cout << "1 - Вывести все отрицательные числа" << endl;
+		cout << "2 - Вывести все положительные числа" << endl;
+		cout << "3 - Вывести числа которые кратны числу" << endl;
+		cin >> v;
+		switch (v){
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		default:
+			cout << "Неизвестный выбор, попробуйте ещё раз!" << endl;
+		}
+		break;
+	}
+	return 0;
+}
